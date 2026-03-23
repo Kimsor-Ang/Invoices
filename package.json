@@ -1,0 +1,23 @@
+{
+  "name": "thermal-invoice-app",
+  "version": "1.0.0",
+  "description": "Invoice application for thermal printer (80mm)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "export": "node export-excel.js"
+  },
+  "keywords": ["invoice", "thermal-printer", "receipt"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.16.3",
+    "body-parser": "^1.20.2",
+    "exceljs": "^4.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

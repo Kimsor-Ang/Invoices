@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Invoices - Thermal Printer App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <a href="/">Create Invoice</a>
+      <a href="/invoices">View Invoices</a>
+      <a href="/products">Manage Products</a>
+      <a href="/report">📊 Report</a>
+    </nav>
+
+    <div class="container">
+      <h1>All Invoices</h1>
+
+      <!-- Messages -->
+      <div id="messageContainer"></div>
+
+      <!-- Loading Indicator -->
+      <div id="loadingContainer" style="display: none" class="loading">
+        <div class="spinner"></div>
+        <p>Loading invoices...</p>
+      </div>
+
+      <!-- Invoices List -->
+      <ul id="invoicesList" class="invoices-list"></ul>
+
+      <!-- No invoices message -->
+      <div
+        id="emptyMessage"
+        style="display: none; text-align: center; padding: 40px; color: #999"
+      >
+        <p style="margin-bottom: 30px">No invoices found.</p>
+        <a href="/" class="btn btn-primary">Create first invoice</a>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/invoices.js"></script>
+  </body>
+</html>

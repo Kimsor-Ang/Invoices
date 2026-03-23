@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Details - Thermal Printer App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <a href="/">Create Invoice</a>
+      <a href="/invoices">View Invoices</a>
+      <a href="/products">Manage Products</a>
+      <a href="/report">📊 Report</a>
+    </nav>
+
+    <div class="container">
+      <h1>Invoice Details</h1>
+
+      <!-- Messages -->
+      <div id="messageContainer"></div>
+
+      <!-- Loading Indicator -->
+      <div id="loadingContainer" style="display: none" class="loading">
+        <div class="spinner"></div>
+        <p>Loading invoice...</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div id="actionButtons" style="display: none; margin-bottom: 20px">
+        <button class="btn btn-primary" onclick="invoiceDetail.printInvoice()">
+          🖨️ Print Invoice
+        </button>
+        <button class="btn btn-danger" onclick="invoiceDetail.deleteInvoice()">
+          🗑️ Delete Invoice
+        </button>
+        <a href="/invoices" class="btn btn-secondary">Back to List</a>
+      </div>
+
+      <!-- Invoice Display -->
+      <div id="invoiceDisplay"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/invoice-detail.js"></script>
+  </body>
+</html>

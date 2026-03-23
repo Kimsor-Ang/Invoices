@@ -1,0 +1,616 @@
+/* Thermal Printer Invoice Styles (80mm width) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Courier New", monospace;
+  background-color: #f5f5f5;
+  padding: 20px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.container {
+  background: white;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1150px;
+}
+
+/* Navigation */
+nav {
+  background: #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 10px;
+  background: #555;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #777;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Dropdown styling */
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+select:focus {
+  outline: none;
+  border-color: #333;
+  background-color: #f9f9f9;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  resize: vertical;
+  font-weight: bold;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #333;
+}
+
+/* Unit type buttons */
+.unit-btn {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 50px;
+}
+
+.unit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.unit-btn:enabled:hover {
+  background: #e0e0e0;
+  border-color: #999;
+}
+
+.unit-btn:enabled:active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .unit-btn {
+    padding: 8px 8px;
+    font-size: 10px;
+    min-width: 35px;
+  }
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background: #333;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #555;
+}
+
+.btn-secondary {
+  background: #777;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #999;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #218838;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+/* Items section */
+.items-section {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fafafa;
+}
+
+.items-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+
+.item-card > div {
+  display: grid;
+  /* make quantity column wider for readability */
+  grid-template-columns: 2.5fr 1.8fr 1.2fr 1.5fr 1fr 50px;
+  gap: 8px;
+  align-items: end;
+}
+
+@media (max-width: 1200px) {
+  .item-card > div {
+    /* also adjust for medium screens */
+    grid-template-columns: 2fr 1.8fr 1fr 0.7fr 1fr 45px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .item-card > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .item-card > div > div:nth-child(3),
+  .item-card > div > div:nth-child(4),
+  .item-card > div > div:nth-child(5),
+  .item-card > div > button {
+    grid-column: auto;
+  }
+}
+
+.item-row input,
+.item-row select {
+  padding: 6px;
+  font-size: 12px;
+  width: 100%;
+}
+
+/* larger font for quantity field to make numbers easier to read */
+.item-row .item-quantity {
+  font-size: 16px;
+  /* ensure the input doesn't shrink too much */
+  min-width: 60px;
+  text-align: center;
+  padding: 8px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .item-row input,
+  .item-row select {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+.item-subtotal {
+  font-weight: bold;
+  text-align: right;
+  padding: 0 5px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  padding: 8px;
+}
+
+.btn-remove {
+  padding: 5px 8px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 35px;
+  height: 35px;
+}
+
+.btn-remove:hover {
+  background: #c82333;
+}
+
+.btn-add-item {
+  background: #17a2b8;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn-add-item:hover {
+  background: #138496;
+}
+
+/* Receipt preview area */
+.receipt {
+  width: 72mm;
+  margin: 20px auto;
+  padding: 10mm;
+  background: white;
+  border: 1px solid #ddd;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 1px dashed #000;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.receipt-number {
+  font-size: 11px;
+  margin: 5px 0;
+}
+
+.receipt-date {
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.receipt-customer {
+  margin: 5px 0;
+  border-bottom: 1px dashed #000;
+  padding-bottom: 5px;
+}
+
+.receipt-items {
+  margin: 8px 0;
+  border-bottom: 1px dashed #000;
+  padding-bottom: 8px;
+}
+
+.item-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin: 3px 0;
+}
+
+.item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+}
+
+.item-qty-price {
+  text-align: right;
+  flex: 0 0 auto;
+  min-width: 90px;
+}
+
+.receipt-totals {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.total-amount {
+  border-top: 2px solid #000;
+  padding-top: 5px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.receipt-footer {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  border-top: 1px dashed #000;
+  padding-top: 8px;
+}
+
+/* Invoices list */
+.invoices-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.invoice-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invoice-info {
+  flex: 1;
+}
+
+.invoice-info h3 {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.invoice-info p {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0;
+}
+
+.invoice-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 15px;
+}
+
+.invoice-actions a {
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.btn-view {
+  background: #17a2b8;
+  color: white;
+}
+
+.btn-view:hover {
+  background: #138496;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+/* Messages */
+.message {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Loader */
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-weight: bold;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Thermal printer print styles */
+@media print {
+  /* Page settings for 80mm thermal printer */
+  @page {
+    size: 80mm auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Print-specific styles */
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 80mm;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  nav,
+  .btn,
+  .form-group,
+  label,
+  input,
+  .items-section,
+  .btn-add-item,
+  .btn-print {
+    display: none !important;
+  }
+
+  /* Make receipt full width when printing */
+  .receipt {
+    width: 100%;
+    margin: 0;
+    padding: 5mm;
+    border: none;
+    box-shadow: none;
+  }
+
+  .receipt-items {
+    border-bottom: solid #000;
+  }
+
+  /* Ensure no page breaks in the middle */
+  .receipt,
+  .item-line,
+  .total-row {
+    page-break-inside: avoid;
+  }
+
+  /* Remove all margins for thermal printer */
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .item-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .invoice-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invoice-actions {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .invoice-actions button,
+  .invoice-actions a {
+    flex: 1;
+    text-align: center;
+  }
+}
