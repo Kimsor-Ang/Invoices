@@ -113,7 +113,7 @@ const invoiceDetail = {
             <span>$${parseFloat(invoice.total_amount).toFixed(2)}</span>
           </div>
           <div class="total-amount">
-            $${parseFloat(invoice.total_amount).toFixed(2)} (៛ ${(parseFloat(invoice.total_amount) * 4000).toFixed(0)})
+            $${parseFloat(invoice.total_amount).toFixed(2)} (៛ ${Math.round(invoice.total_amount * 40) * 100})
           </div>
         </div>
 

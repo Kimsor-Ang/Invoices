@@ -333,7 +333,7 @@ const app = {
     });
 
     document.getElementById("totalAmount").textContent =
-      `$ ${total.toFixed(2)} = ៛ ${total * 4000}`;
+      `$ ${total.toFixed(2)} = ៛ ${Math.round(total * 40) * 100}`;
   },
 
   // Submit the invoice form
@@ -486,7 +486,7 @@ const app = {
             <span>$${invoiceData.totalAmount.toFixed(2)}</span>
           </div>
           <div class="total-amount">
-            $${invoiceData.totalAmount.toFixed(2)} (៛ ${(invoiceData.totalAmount * 4000).toFixed(0)})
+            $${invoiceData.totalAmount.toFixed(2)} (៛ ${Math.round(invoiceData.totalAmount * 40) * 100})
             </div>
           <div class="total-amount">
             
