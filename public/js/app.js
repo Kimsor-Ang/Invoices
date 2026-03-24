@@ -16,12 +16,23 @@ const app = {
     // Listen to form submission
     document.getElementById("invoiceForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const isSaved = await this.submitForm();
-      if (isSaved) {
-        this.resetItemRow();
-        this.addItemRow();
-        this.generateInvoiceNumber();
-        this.updateTotal();
+      const submitBtn = document.getElementById("submitBtn");
+      // 🛑 Prevent double click
+      if (submitBtn.disabled) return;
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Saving...";
+      try {
+        const isSaved = await this.submitForm();
+        if (isSaved) {
+          this.resetItemRow();
+          this.addItemRow();
+          this.generateInvoiceNumber();
+          this.updateTotal();
+        }
+      } finally {
+        // ✅ Always re-enable (even if error)
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Save Invoice";
       }
     });
 
