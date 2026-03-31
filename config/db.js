@@ -9,17 +9,23 @@ if (fs.existsSync(envPath)) {
   require('node:process').loadEnvFile(envPath);
 }
 
+const shouldUseSsl =
+  process.env.PGSSL === 'true' ||
+  process.env.PGSSLMODE === 'require' ||
+  process.env.NODE_ENV === 'production';
+
 const poolConfig = process.env.DATABASE_URL
   ? {
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.PGSSL === 'true' ? { rejectUnauthorized: false } : false
+      ssl: shouldUseSsl ? { rejectUnauthorized: false } : false
     }
   : {
       host: process.env.PGHOST,
       port: Number(process.env.PGPORT),
       database: process.env.PGDATABASE,
       user: process.env.PGUSER,
-      password: process.env.PGPASSWORD
+      password: process.env.PGPASSWORD,
+      ssl: shouldUseSsl ? { rejectUnauthorized: false } : false
     };
 
 const db = new Pool(poolConfig);

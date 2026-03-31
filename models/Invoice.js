@@ -184,23 +184,23 @@ class Invoice {
     };
   }
 
-  // static async deleteProduct(id) {
-  //   const result = await db.query('DELETE FROM products WHERE id = $1', [id]);
-  //   return {
-  //     success: true,
-  //     message: 'Product deleted successfully',
-  //     affectedRows: result.rowCount
-  //   };
-  // }
+  static async deleteProduct(id) {
+    const result = await db.query('DELETE FROM products WHERE id = $1', [id]);
+    return {
+      success: true,
+      message: 'Product deleted successfully',
+      affectedRows: result.rowCount
+    };
+  }
 
-  // static async deleteInvoice(id) {
-  //   const result = await db.query('DELETE FROM invoices WHERE id = $1', [id]);
-  //   return {
-  //     success: true,
-  //     message: 'Invoice deleted successfully',
-  //     affectedRows: result.rowCount
-  //   };
-  // }
+  static async deleteInvoice(id) {
+    const result = await db.query('DELETE FROM invoices WHERE id = $1', [id]);
+    return {
+      success: true,
+      message: 'Invoice deleted successfully',
+      affectedRows: result.rowCount
+    };
+  }
 }
 
 module.exports = Invoice;
