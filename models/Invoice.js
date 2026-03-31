@@ -7,13 +7,18 @@ class Invoice {
     const todayCompact = todayDate.replace(/-/g, '');
 
     const result = await db.query(
-      `SELECT COUNT(*)::int AS count FROM invoices
-       WHERE created_at::date = $1::date`,
-      [todayDate]
+      `SELECT COALESCE(
+          MAX(CAST(RIGHT(invoice_number, 3) AS INTEGER)),
+          0
+        ) AS last_sequence
+       FROM invoices
+       WHERE created_at::date = $1::date
+         AND invoice_number LIKE $2`,
+      [todayDate, `INV-${todayCompact}-%`]
     );
 
-    const count = (result.rows[0]?.count || 0) + 1;
-    const sequenceNumber = String(count).padStart(3, '0');
+    const nextSequence = Number(result.rows[0]?.last_sequence || 0) + 1;
+    const sequenceNumber = String(nextSequence).padStart(3, '0');
     return `INV-${todayCompact}-${sequenceNumber}`;
   }
 

@@ -51,9 +51,9 @@ const app = {
   async loadProducts() {
     try {
       const response = await fetch("/api/products");
-      const result = await response.json();
+      const result = await response.json().catch(() => null);
 
-      if (result.success) {
+      if (response.ok && result?.success) {
         this.products = result.data;
       } else {
         console.error("Failed to load products:", result.message);
@@ -429,12 +429,13 @@ const app = {
         );
         return true;
       } else {
-        this.showMessage("Error: " + result.message, "error");
+        const message = result?.error || result?.message || "Error saving invoice";
+        this.showMessage("Error: " + message, "error");
         return false;
       }
     } catch (error) {
       console.error("Error:", error);
-      this.showMessage("Error saving invoice", "error");
+      this.showMessage("Error: " + error.message, "error");
       return false;
     }
   },
